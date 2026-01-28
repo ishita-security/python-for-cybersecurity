@@ -1,30 +1,25 @@
 # log_analysis.py
-# Simple log analysis script for cybersecurity use cases
+# Log file analysis for detecting suspicious login attempts
 
 from collections import defaultdict
 
-# Sample log data (simulating authentication logs)
-logs = [
-    "192.168.1.10 - Failed login",
-    "192.168.1.10 - Failed login",
-    "192.168.1.10 - Failed login",
-    "192.168.1.12 - Successful login",
-    "192.168.1.15 - Failed login",
-    "192.168.1.15 - Failed login",
-    "192.168.1.20 - Successful login"
-]
+LOG_FILE = "auth.log"
+THRESHOLD = 3
 
 failed_attempts = defaultdict(int)
 
-# Analyze logs
-for log in logs:
-    if "Failed" in log:
-        ip = log.split(" ")[0]
-        failed_attempts[ip] += 1
+try:
+    with open(LOG_FILE, "r") as file:
+        for line in file:
+            if "Failed login" in line:
+                ip = line.split()[0]
+                failed_attempts[ip] += 1
 
-# Flag suspicious IPs
-print("Suspicious IPs with multiple failed login attempts:\n")
+    print("\nSuspicious IPs with multiple failed login attempts:\n")
 
-for ip, count in failed_attempts.items():
-    if count >= 3:
-        print(f"⚠️  {ip} has {count} failed login attempts")
+    for ip, count in failed_attempts.items():
+        if count >= THRESHOLD:
+            print(f"⚠️  {ip} has {count} failed login attempts")
+
+except FileNotFoundError:
+    print("Log file not found. Please ensure auth.log exists.")
