@@ -1,4 +1,5 @@
 # Python for Cybersecurity
+This project demonstrates hands-on cybersecurity scripting skills aligned with entry-level SOC and blue team roles.
 
 This repository contains beginner-to-intermediate Python projects focused on **real-world cybersecurity use cases**.  
 The goal is to demonstrate how Python can be used to automate security tasks, analyze logs, and support SOC operations.
