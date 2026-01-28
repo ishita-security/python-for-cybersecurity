@@ -37,5 +37,6 @@ python log_analysis.py
 192.168.1.10 Failed login
 192.168.1.12 Successful login
 
+
 ###  Sample Output
 192.168.1.10 has 3 failed login attempts
