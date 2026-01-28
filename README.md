@@ -39,4 +39,5 @@ python log_analysis.py
 
 
 ###  Sample Output
-192.168.1.10 has 3 failed login attempts
+⚠️  192.168.1.10 has 3 failed login attempts
+
